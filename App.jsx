@@ -1,14 +1,14 @@
 import { StyleSheet } from 'react-native';
-import {Provider} from 'react-redux'
+import { Provider } from 'react-redux'
 import { store } from './app/store';
-import Home from './screens/Home';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import RootStack from './navigatores';
 
 export default function App() {
   return (
     <Provider store={store}>
       <SafeAreaProvider>
-        <Home/>
+        <RootStack />
       </SafeAreaProvider>
     </Provider>
   );

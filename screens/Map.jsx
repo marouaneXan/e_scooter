@@ -8,7 +8,7 @@ import {
   Text,
   Button,
 } from "react-native";
-import ScooterMarker from "../components/ScooterMarker";
+import Scooter from "../components/Scooter";
 import Constants from "expo-constants";
 import axios from "axios";
 
@@ -45,7 +45,7 @@ export default function Map() {
   return (
     <View style={styles.container}>
       <MapView style={styles.map} initialRegion={initial_location}>
-        <ScooterMarker onScooterPress={setSelectedScooter} storeId={setId} />
+        <Scooter onScooterPress={setSelectedScooter} storeId={setId} />
       </MapView>
       <View style={styles.centeredView}>
         <Modal animationType={"fade"} visible={selectedScooter !== null}>

@@ -1,6 +1,5 @@
 import { View, Text } from 'react-native'
 import React, { useEffect, useState } from "react";
-import { View } from "react-native";
 import { Marker } from "react-native-maps";
 import axios from "axios";
 import Constants from "expo-constants";

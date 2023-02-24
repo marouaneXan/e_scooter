@@ -1,22 +1,20 @@
-import { View, Text } from 'react-native'
+import { View } from 'react-native'
 import React, { useEffect, useState } from "react";
 import { Marker } from "react-native-maps";
-import axios from "axios";
 import Constants from "expo-constants";
 
 const Scooter = () => {
     const [scooters, setScooters] = useState([]);
     const [id, setId] = useState(null);
     const apiUrl = Constants.expoConfig.extra.apiUrl;
-
     useEffect(() => {
-        axios
-            .get(`${apiUrl}/user/allScooters`)
-            .then((response) => {
-                setScooters(response.data);
-                setId(response.data._id);
+        fetch('http://localhost:5000/client/allScooters')
+            .then(response => response.json())
+            .then(data => {
+                setScooters(data);
+                setId(data._id);
             })
-            .catch((error) => console.log("error " + error));
+            .catch(error => console.log("error " + error));
     }, []);
     return (
         <View>

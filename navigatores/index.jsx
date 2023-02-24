@@ -8,7 +8,7 @@ const RootStack = () => {
         <NavigationContainer>
             <Stack.Navigator>
                 <Stack.Screen name='Home' component={Home} />
-                <Stack.Screen name='Map' component={Map} />
+                {/* <Stack.Screen name='Map' component={Map} /> */}
             </Stack.Navigator>
         </NavigationContainer>
     )

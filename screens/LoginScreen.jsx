@@ -12,8 +12,7 @@ import {
 import axios from "axios";
 import Constants from "expo-constants";
 
-const RegisterScreen = ({ navigation }) => {
-  const [fullName, setFullName] = useState("");
+const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
@@ -23,13 +22,12 @@ const RegisterScreen = ({ navigation }) => {
   const handleRegister = async () => {
     setLoading(true);
     try {
-      const res = await axios.post(`${apiUrl}/client/register`, {
-        name: fullName,
+      const res = await axios.post(`${apiUrl}/user/login`, {
         email,
         password,
       });
       console.log(res.data);
-      navigation.navigate("LoginScreen");
+      navigation.navigate("Home");
     } catch (error) {
       console.log(error.response.data.message);
       Alert.alert("Error", error.response.data.message);
@@ -43,15 +41,9 @@ const RegisterScreen = ({ navigation }) => {
       <View style={styles.imageContainer}>
         <Image
           style={{ width: 300, height: 300, marginBottom: 20 }}
-          source={require("../assets/scooter.gif")}
-        />
+          source={require("../assets/scooter.gif")} />
       </View>
       <View style={styles.wrapper}>
-        <TextInput
-          style={styles.input}
-          onChangeText={(text) => setFullName(text)}
-          placeholder="Full Name"
-        />
         <TextInput
           style={styles.input}
           onChangeText={(text) => setEmail(text)}
@@ -68,18 +60,18 @@ const RegisterScreen = ({ navigation }) => {
         ) : (
           <TouchableOpacity style={styles.button}>
             <Text style={styles.buttonText} onPress={handleRegister}>
-              Register
+              Login
             </Text>
           </TouchableOpacity>
         )}
         <View style={{ flexDirection: "row", marginTop: 20 }}>
-          <Text>Already have an account?</Text>
+          <Text>I don't have an account?</Text>
           <TouchableOpacity>
             <Text
               style={styles.link}
-              onPress={() => navigation.navigate("LoginScreen")}
+              onPress={() => navigation.navigate("Register")}
             >
-              Login
+              Register
             </Text>
           </TouchableOpacity>
         </View>
@@ -92,6 +84,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  imageContainer: {
     alignItems: "center",
     justifyContent: "center",
   },
@@ -136,4 +132,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default RegisterScreen;
+export default LoginScreen;
